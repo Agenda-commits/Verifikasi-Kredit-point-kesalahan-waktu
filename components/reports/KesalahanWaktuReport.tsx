@@ -72,19 +72,19 @@ const KesalahanWaktuReport: React.FC<Props> = ({ data }) => {
         <div className="col-span-4 bg-zinc-50 border border-zinc-200 p-4 flex flex-col justify-center gap-1 rounded-sm shadow-sm">
             <div className="flex justify-between items-baseline pb-1 border-b border-zinc-200">
                <p className="text-[6.5px] text-zinc-500 font-bold uppercase tracking-widest">SALDO BERJALAN</p>
-               <p className="text-[10px] font-black text-black italic uppercase leading-none">RP {formatClean(data.saldoAkunKerja)}</p>
+               <p className="text-[10px] font-black text-black italic uppercase leading-none pr-1">RP {formatClean(data.saldoAkunKerja)}</p>
             </div>
             <div className="flex justify-between items-baseline pb-1 border-b border-zinc-200">
                <p className="text-[6.5px] text-zinc-500 font-bold uppercase tracking-widest">BIAYA PEMULIHAN</p>
-               <p className="text-[10px] font-black text-black italic uppercase leading-none">RP {formatClean(data.moneyIn)}</p>
+               <p className="text-[10px] font-black text-black italic uppercase leading-none pr-1">RP {formatClean(data.moneyIn)}</p>
             </div>
             <div className="flex justify-between items-baseline py-0.5">
                <p className="text-[6.5px] text-amber-700 font-black uppercase italic tracking-widest">KOMISI VALIDASI (50%)</p>
-               <p className="text-[10px] font-black text-amber-600 italic uppercase leading-none">+ RP {formatClean(bonusKomisi)}</p>
+               <p className="text-[10px] font-black text-amber-600 italic uppercase leading-none pr-1">+ RP {formatClean(bonusKomisi)}</p>
             </div>
             <div className="pt-1 mt-0.5 border-t border-dashed border-zinc-300 flex justify-between items-end">
                <p className="text-[6.5px] text-emerald-800 font-black uppercase italic tracking-[0.2em]">TOTAL PENARIKAN</p>
-               <p className="text-[24px] font-black tracking-tighter text-emerald-700 leading-none italic uppercase">
+               <p className="text-[24px] font-black tracking-tighter text-emerald-700 leading-none italic uppercase pr-2">
                  RP {formatClean(data.moneyTotal)}
                </p>
             </div>

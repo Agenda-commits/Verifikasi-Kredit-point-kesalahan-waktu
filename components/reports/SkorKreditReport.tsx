@@ -92,7 +92,7 @@ const SkorKreditReport: React.FC<Props> = ({ data }) => {
                  <p className="text-[9px] font-black tracking-[0.3em] uppercase italic">DETAIL INVOICE PENCAIRAN AKUMULASI</p>
               </div>
               
-              <div className="space-y-3 flex-1 overflow-hidden">
+              <div className="space-y-3 flex-1 overflow-hidden pr-1">
                  <div className="flex justify-between items-baseline border-b border-zinc-800/40 pb-2.5">
                     <div className="space-y-0.5">
                        <p className="text-[7.5px] font-black text-zinc-500 uppercase tracking-widest leading-none">SALDO AKUN KERJA AKTIF</p>
@@ -100,7 +100,7 @@ const SkorKreditReport: React.FC<Props> = ({ data }) => {
                     </div>
                     <div className="flex items-baseline gap-1.5 shrink-0">
                        <span className="text-[9px] font-black text-zinc-600 italic">RP</span>
-                       <p className="text-[14.5px] font-black text-white italic tracking-tight leading-none">{formatClean(data.saldoAkunKerja)}</p>
+                       <p className="text-[14.5px] font-black text-white italic tracking-tight leading-none pr-2">{formatClean(data.saldoAkunKerja)}</p>
                     </div>
                  </div>
 
@@ -111,7 +111,7 @@ const SkorKreditReport: React.FC<Props> = ({ data }) => {
                     </div>
                     <div className="flex items-baseline gap-1.5 shrink-0">
                        <span className="text-[9px] font-black text-zinc-600 italic">RP</span>
-                       <p className="text-[14.5px] font-black text-white italic tracking-tight leading-none">{formatClean(costPoin)}</p>
+                       <p className="text-[14.5px] font-black text-white italic tracking-tight leading-none pr-2">{formatClean(costPoin)}</p>
                     </div>
                  </div>
 
@@ -122,7 +122,7 @@ const SkorKreditReport: React.FC<Props> = ({ data }) => {
                     </div>
                     <div className="flex items-baseline gap-1.5 text-emerald-400 shrink-0">
                        <span className="text-[9px] font-black italic leading-none">+ RP</span>
-                       <p className="text-[14.5px] font-black italic tracking-tight leading-none">{formatClean(bonusKomisi)}</p>
+                       <p className="text-[14.5px] font-black italic tracking-tight leading-none pr-2">{formatClean(bonusKomisi)}</p>
                     </div>
                  </div>
 
@@ -132,12 +132,12 @@ const SkorKreditReport: React.FC<Props> = ({ data }) => {
                  </div>
               </div>
 
-              {/* Grand Total Footer - Resized for Precision and Alignment */}
+              {/* Grand Total Footer */}
               <div className="mt-auto pt-4 border-t-[1.5px] border-zinc-800 flex flex-col items-end shrink-0">
-                  <p className="text-[8px] font-black text-[#eab308] uppercase tracking-[0.4em] italic mb-1.5">JUMLAH TOTAL PENARIKAN BERSIH</p>
-                  <div className="flex items-baseline gap-2 leading-none pr-1">
+                  <p className="text-[8px] font-black text-[#eab308] uppercase tracking-[0.4em] italic mb-1.5 pr-1">JUMLAH TOTAL PENARIKAN BERSIH</p>
+                  <div className="flex items-baseline gap-2 leading-none">
                       <span className="text-[12px] font-black text-zinc-600 italic leading-none mb-0.5">RP</span>
-                      <p className="text-[30px] font-black text-white tracking-tighter italic uppercase leading-none">
+                      <p className="text-[30px] font-black text-white tracking-tighter italic uppercase leading-none pr-2">
                           {formatClean(grandTotal)}
                       </p>
                   </div>
@@ -153,7 +153,7 @@ const SkorKreditReport: React.FC<Props> = ({ data }) => {
                  <p className="text-[7.5px] font-black text-zinc-400 tracking-[0.2em] uppercase italic mb-1.5">SALDO AKUN KERJA SAAT INI</p>
                  <div className="flex items-baseline gap-2 leading-none">
                     <span className="text-[12px] font-black text-zinc-200 italic uppercase leading-none mb-0.5">RP</span>
-                    <p className="text-[30px] font-black text-black tracking-tighter italic uppercase leading-none">
+                    <p className="text-[30px] font-black text-black tracking-tighter italic uppercase leading-none pr-2">
                        {formatClean(data.saldoAkunKerja)}
                     </p>
                  </div>
@@ -163,7 +163,7 @@ const SkorKreditReport: React.FC<Props> = ({ data }) => {
               </div>
            </div>
 
-           {/* SECURITY NOTE - Compact to prevent pushing layout */}
+           {/* SECURITY NOTE */}
            <div className="mb-3 bg-red-50/50 border border-red-200 px-4 py-2 rounded-sm flex items-start gap-3 relative overflow-hidden shadow-sm shrink-0">
               <div className="absolute top-0 left-0 w-1 h-full bg-red-600"></div>
               <ShieldAlert size={13} className="text-red-600 shrink-0 mt-0.5" />
@@ -175,7 +175,7 @@ const SkorKreditReport: React.FC<Props> = ({ data }) => {
               </div>
            </div>
 
-           {/* PROTOKOL PANEL - Precise spacing and font sizes */}
+           {/* PROTOKOL PANEL */}
            <div className="bg-[#fafafa] border border-zinc-200 p-4 rounded-sm relative shadow-inner overflow-hidden border-l-[8px] border-zinc-900 flex-1 flex flex-col justify-center max-h-[170px]">
               <div className="flex items-center gap-2 mb-2.5 relative z-10 border-b border-zinc-200 pb-2 shrink-0">
                 <ShieldCheck size={13} className="text-zinc-900" />
@@ -213,7 +213,7 @@ const SkorKreditReport: React.FC<Props> = ({ data }) => {
         </div>
       </div>
 
-      {/* Bagian Narasi Bawah - Precision Height for Document Stability */}
+      {/* Bagian Narasi Bawah */}
       <div className="bg-[#fffbeb] border border-[#fde047] px-6 py-2.5 shadow-sm relative border-l-[8px] border-[#fbbf24] flex items-center gap-6 shrink-0 h-[85px] rounded-r-sm overflow-hidden">
         <div className="shrink-0">
           <div className="w-9 h-9 rounded-full border border-amber-200 bg-white flex items-center justify-center shadow-sm">

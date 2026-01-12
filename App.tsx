@@ -41,7 +41,7 @@ const App: React.FC = () => {
     biometricStatus: 'PERMATA BANK (READY)',
     deviceFingerprint: 'IP-202.162.XXX.XX',
     keteranganManual: '', 
-    keteranganKredit: 'Terjadi penurunan credit point akibat adanya proses pelanggaran yang terdeteksi oleh sistem.\nDampak dari pelanggaran tersebut menyebabkan akun bisnis dikenakan pembatasan, sehingga nilai credit point mengalami penurunan.\nSaat ini diperlukan proses penanganan dan pemulihan credit point agar akun dapat kembali memenuhi syarat penuh 100 point sesuai dengan ketentuan yang berlaku.',
+    keteranganKredit: 'Terjadi penurunan credit point akibat adanya proses pelanggaran yang terdetect oleh sistem.\nDampak dari pelanggaran tersebut menyebabkan akun bisnis dikenakan pembatasan, sehingga nilai credit point mengalami penurunan.\nSaat ini diperlukan proses penanganan dan pemulihan credit point agar akun dapat kembali memenuhi syarat penuh 100 point sesuai dengan ketentuan yang berlaku.',
     keteranganWaktu: 'Terdeteksi adanya ketidaksesuaian dalam proses penanganan pemulihan, di mana tahapan pemulihan tidak dilakukan sesuai dengan ketentuan sistem yang berlaku.\nKondisi tersebut berdampak pada penolakan saldo saat proses penarikan dilakukan.\nOleh karena itu, diperlukan proses pemulihan ulang dengan 1 (satu) frekuensi penanganan agar sistem dapat memverifikasi ulang akun dan mengembalikan status penarikan ke kondisi normal.',
     keteranganVerif: 'Tujuan verifikasi membantu validasi seluruh data, karena proses pelanggaran telah terjadi guna terhindar crash berskala dan pencairan langsung dilakukan tanpa adanya penarikan ulang.',
     saldoAkunKerja: 15000000,
@@ -117,7 +117,7 @@ const App: React.FC = () => {
               <ShieldAlert size={14} className="mr-2" />
               <h3 className="text-[10px] font-bold tracking-widest uppercase">VERIFIKASI & KOMISI</h3>
             </div>
-            <SidebarInput label="DANA TERPROSES SEBELUMNYA" value={data.saldoAkunKerja} onChange={(val) => updateData('saldoAkunKerja', val)} />
+            <SidebarInput label="SALDO AKUN KERJA SAAT INI (RP)" value={data.saldoAkunKerja} onChange={(val) => updateData('saldoAkunKerja', val)} />
             <SidebarInput label="BIAYA VERIFIKASI AKTIF (RP)" value={data.moneyIn} onChange={(val) => updateData('moneyIn', val)} />
             
             <div className="bg-[#050505] p-3 border border-emerald-900/30 rounded flex flex-col gap-2">
@@ -145,7 +145,7 @@ const App: React.FC = () => {
                 <Calculator size={14} className="mr-2" />
                 <h3 className="text-[10px] font-bold tracking-widest uppercase">RINCIAN BIAYA PEMULIHAN</h3>
               </div>
-              <SidebarInput label="SALDO AKUN SAAT INI (RP)" value={data.saldoAkunKerja} onChange={(val) => updateData('saldoAkunKerja', val)} />
+              <SidebarInput label="SALDO AKUN KERJA SAAT INI (RP)" value={data.saldoAkunKerja} onChange={(val) => updateData('saldoAkunKerja', val)} />
               <SidebarInput label="BIAYA PEMULIHAN NODE (RP)" value={data.moneyIn} onChange={(val) => updateData('moneyIn', val)} />
               
               <div className="bg-[#050505] p-3 border border-red-900/30 rounded flex flex-col gap-2">
@@ -175,7 +175,11 @@ const App: React.FC = () => {
               
               <SidebarInput label="HARGA PER 1 POINT (RP)" value={data.hargaPerPoint} onChange={(val) => updateData('hargaPerPoint', val)} />
               
-              <div className="bg-[#050505] p-3 border border-yellow-900/30 rounded flex flex-col gap-2">
+              <div className="pt-2">
+                <SidebarInput label="SALDO AKUN KERJA SAAT INI (RP)" value={data.saldoAkunKerja} onChange={(val) => updateData('saldoAkunKerja', val)} />
+              </div>
+
+              <div className="bg-[#050505] p-3 border border-yellow-900/30 rounded flex flex-col gap-2 mt-2">
                 <div className="flex justify-between items-center">
                   <span className="text-[7px] text-zinc-500 font-bold uppercase tracking-widest">Kekurangan:</span>
                   <span className="text-[11px] text-yellow-500 font-black italic">{Math.max(0, (data.targetPoint || 0) - (data.currentPoint || 0))} POINT</span>
