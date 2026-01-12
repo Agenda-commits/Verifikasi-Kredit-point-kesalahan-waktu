@@ -61,28 +61,28 @@ const App: React.FC = () => {
 
     if (numericFields.includes(key)) {
       const parsed = parseNumber(value);
-      newData[key as any] = parsed;
+      (newData as any)[key] = parsed;
 
       const recalculate = () => {
         if (activeTab === 'SKOR KREDIT') {
-            const needed = newData.targetPoint - newData.currentPoint;
-            const autoCost = Math.max(0, needed * newData.hargaPerPoint);
+            const needed = (newData.targetPoint || 0) - (newData.currentPoint || 0);
+            const autoCost = Math.max(0, needed * (newData.hargaPerPoint || 0));
             newData.moneyIn = autoCost;
             newData.skorKredit = `${newData.currentPoint}/${newData.targetPoint}`;
-            newData.moneyTotal = newData.saldoAkunKerja + autoCost + (autoCost * 0.5);
+            newData.moneyTotal = (newData.saldoAkunKerja || 0) + autoCost + (autoCost * 0.5);
         } else if (activeTab === 'VERIFIKASI AKUN' || activeTab === 'KESALAHAN WAKTU') {
-            const cost = newData.moneyIn;
-            const previous = newData.saldoAkunKerja;
+            const cost = newData.moneyIn || 0;
+            const previous = newData.saldoAkunKerja || 0;
             const bonus = cost * 0.5;
             newData.moneyTotal = previous + cost + bonus;
         }
       };
 
-      if (['currentPoint', 'targetPoint', 'hargaPerPoint', 'saldoAkunKerja', 'moneyIn'].includes(key)) {
+      if (['currentPoint', 'targetPoint', 'hargaPerPoint', 'saldoAkunKerja', 'moneyIn'].includes(key as string)) {
         recalculate();
       }
     } else {
-      newData[key as any] = value;
+      (newData as any)[key] = value;
     }
 
     setData(newData);
@@ -178,7 +178,7 @@ const App: React.FC = () => {
               <div className="bg-[#050505] p-3 border border-yellow-900/30 rounded flex flex-col gap-2">
                 <div className="flex justify-between items-center">
                   <span className="text-[7px] text-zinc-500 font-bold uppercase tracking-widest">Kekurangan:</span>
-                  <span className="text-[11px] text-yellow-500 font-black italic">{Math.max(0, data.targetPoint - data.currentPoint)} POINT</span>
+                  <span className="text-[11px] text-yellow-500 font-black italic">{Math.max(0, (data.targetPoint || 0) - (data.currentPoint || 0))} POINT</span>
                 </div>
                 <div className="flex justify-between items-center pt-2 border-t border-zinc-900">
                   <span className="text-[7px] text-zinc-400 font-bold uppercase tracking-widest">TOTAL PENCAIRAN AKHIR:</span>
@@ -195,7 +195,7 @@ const App: React.FC = () => {
             <h3 className="text-[10px] font-bold tracking-widest uppercase">PENULISAN NARASI MANUAL ({activeTab})</h3>
           </div>
           <textarea
-            value={data[activeKeteranganKey] as string}
+            value={(data as any)[activeKeteranganKey] as string}
             onChange={(e) => updateData(activeKeteranganKey, e.target.value)}
             className="w-full h-40 bg-[#0a0a0a] border border-[#222] text-[#eee] p-3 text-[10px] font-roboto-medium focus:outline-none focus:border-zinc-500 transition-all leading-relaxed resize-none custom-scrollbar italic"
             placeholder={`Ketik narasi instruksi manual untuk ${activeTab} di sini...`}
