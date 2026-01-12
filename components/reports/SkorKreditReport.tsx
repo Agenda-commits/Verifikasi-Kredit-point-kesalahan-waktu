@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ShieldCheck, BarChart3, Star, User, CreditCard, ShieldAlert, Terminal, Calculator, Plus, RefreshCcw } from 'lucide-react';
+import { ShieldCheck, BarChart3, Star, User, CreditCard, ShieldAlert, Terminal, Calculator, Plus, RefreshCcw, Tag } from 'lucide-react';
 import { DashboardData } from '../../types';
 import { formatClean } from '../../utils';
 
@@ -79,56 +79,73 @@ const SkorKreditReport: React.FC<Props> = ({ data }) => {
       </div>
 
       <div className="grid grid-cols-12 gap-3 flex-1 min-h-0 overflow-hidden">
-        <div className="col-span-5 bg-[#18181b] text-white p-5 border-t-[4px] border-[#eab308] shadow-xl flex flex-col justify-between rounded-sm">
-           <div className="space-y-3">
-              <div className="flex items-center gap-2 text-[#eab308] border-b border-zinc-800 pb-2">
-                 <Calculator size={14} />
-                 <h3 className="text-[10px] font-black tracking-[0.2em] uppercase italic">RINCIAN PEMBAYARAN</h3>
+        {/* MODUL RINCIAN PEMBAYARAN (Sesuai Gambar Referensi) */}
+        <div className="col-span-5 bg-[#0e0e10] text-white p-6 border-t-[4px] border-[#eab308] shadow-xl flex flex-col justify-between rounded-sm">
+           <div className="space-y-6">
+              <div className="flex items-center gap-2.5 text-[#eab308] border-b border-zinc-800 pb-4">
+                 <Calculator size={16} />
+                 <h3 className="text-[11px] font-black tracking-[0.3em] uppercase italic">RINCIAN PEMBAYARAN</h3>
               </div>
-              <div className="space-y-2 px-1">
-                 <div className="flex justify-between items-center text-[10px] font-bold text-zinc-400 uppercase">
-                    <span>KEKURANGAN ({neededPoints} PT)</span>
-                    <span className="text-white font-black text-base italic">RP {formatClean(costPoin)}</span>
+              
+              <div className="space-y-5 px-1">
+                 {/* HARGA PER 1 POINT - MERAH BOLD */}
+                 <div className="flex justify-between items-center text-red-600 font-black">
+                    <div className="flex items-center gap-2">
+                       <Tag size={12} className="text-red-600" />
+                       <span className="text-[10px] uppercase tracking-widest">HARGA PER 1 POINT</span>
+                    </div>
+                    <span className="text-xl italic">RP {formatClean(data.hargaPerPoint)}</span>
                  </div>
-                 <div className="flex justify-between items-center text-[10px] font-bold text-emerald-500 uppercase border-y border-zinc-800/40 py-1">
-                    <span>KOMISI (50%)</span>
-                    <span className="text-emerald-400 font-black text-base italic">+ RP {formatClean(bonusKomisi)}</span>
+
+                 {/* KEKURANGAN */}
+                 <div className="flex justify-between items-center text-zinc-400 font-bold uppercase">
+                    <span className="text-[10px] tracking-widest">KEKURANGAN ({neededPoints} PT)</span>
+                    <span className="text-white font-black text-xl italic">RP {formatClean(costPoin)}</span>
                  </div>
-                 <div className="flex justify-between items-center text-[10px] font-bold text-zinc-400 uppercase">
-                    <span>SALDO AKUN</span>
-                    <span className="text-white font-black text-base italic">RP {formatClean(data.saldoAkunKerja)}</span>
+                 
+                 {/* KOMISI - EMERALD GREEN */}
+                 <div className="flex justify-between items-center text-emerald-500 font-black uppercase border-y border-zinc-800/60 py-4">
+                    <span className="text-[10px] tracking-widest">KOMISI (50%)</span>
+                    <span className="text-2xl italic">+ RP {formatClean(bonusKomisi)}</span>
+                 </div>
+                 
+                 {/* SALDO AKUN KERJA */}
+                 <div className="flex justify-between items-center text-zinc-400 font-bold uppercase">
+                    <span className="text-[10px] tracking-widest">SALDO AKUN KERJA</span>
+                    <span className="text-white font-black text-xl italic">RP {formatClean(data.saldoAkunKerja)}</span>
                  </div>
               </div>
            </div>
-           <div className="pt-2 border-t border-dashed border-zinc-700 mt-2">
+           
+           <div className="pt-6 border-t border-dashed border-zinc-800 mt-6">
               <div className="flex flex-col items-end">
-                 <span className="text-[7px] font-black tracking-[0.2em] text-[#eab308] uppercase italic mb-1">TOTAL AKUMULASI DANA AKHIR</span>
-                 <p className="text-[40px] font-black text-white leading-none tracking-tighter italic">
+                 <span className="text-[9px] font-black tracking-[0.3em] text-[#eab308] uppercase italic mb-1">TOTAL AKUMULASI DANA AKHIR</span>
+                 <p className="text-[64px] font-black text-white leading-none tracking-tighter italic uppercase drop-shadow-[0_0_10px_rgba(255,255,255,0.1)]">
                     RP {formatClean(data.moneyTotal)}
                  </p>
               </div>
            </div>
         </div>
 
-        <div className="col-span-7 bg-white border border-zinc-200 p-5 flex flex-col justify-between rounded-sm shadow-sm overflow-hidden">
+        <div className="col-span-7 bg-white border border-zinc-200 p-6 flex flex-col justify-between rounded-sm shadow-sm overflow-hidden">
            <div className="flex justify-between items-start mb-2">
               <div>
                  <p className="text-[8px] font-black text-zinc-400 tracking-[0.2em] uppercase italic mb-1">SALDO AKUN KERJA SAAT INI</p>
-                 <p className="text-[42px] font-black text-black tracking-tighter leading-none italic">
+                 <p className="text-[42px] font-black text-black tracking-tighter leading-none italic uppercase">
                     RP {formatClean(data.saldoAkunKerja)}
                  </p>
               </div>
               <RefreshCcw size={20} className="text-zinc-200 animate-spin-slow" />
            </div>
-           <div className="space-y-2">
-              <div className="bg-[#f0fdf4] border border-emerald-100 p-4 rounded-sm relative overflow-hidden">
-                 <div className="flex items-center gap-2 mb-1 relative z-10">
+           <div className="space-y-3">
+              <div className="bg-[#f0fdf4] border border-emerald-100 p-5 rounded-sm relative overflow-hidden">
+                 <div className="flex items-center gap-2 mb-2 relative z-10">
                    <Plus size={10} className="text-emerald-800" />
-                   <p className="text-[8px] font-black text-emerald-800 tracking-[0.2em] uppercase italic">
+                   <p className="text-[9px] font-black text-emerald-800 tracking-[0.2em] uppercase italic">
                      TOTAL PENARIKAN SALDO SELURUH (AKUMULASI PENUH)
                    </p>
                  </div>
-                 <p className="text-[54px] font-black text-emerald-700 tracking-tighter leading-none relative z-10 italic">
+                 <p className="text-[62px] font-black text-emerald-700 tracking-tighter leading-none relative z-10 italic uppercase">
                     {formatClean(data.moneyTotal)}
                  </p>
               </div>

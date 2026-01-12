@@ -11,12 +11,6 @@ interface Props {
 const KesalahanWaktuReport: React.FC<Props> = ({ data }) => {
   const bonusKomisi = data.moneyIn * 0.5;
 
-  const getFontSize = (text: string) => {
-    const len = text.length;
-    if (len > 600) return 'text-[11px]';
-    return 'text-[12px]';
-  };
-
   return (
     <div className="flex flex-col h-full animate-in space-y-4 max-h-full overflow-hidden">
       {/* Header Laporan */}
@@ -42,7 +36,7 @@ const KesalahanWaktuReport: React.FC<Props> = ({ data }) => {
             <span className="text-[8px] font-black tracking-[0.3em] uppercase italic">DEVIASI SINKRONISASI</span>
           </div>
           <div className="flex items-center gap-4">
-            <h1 className="text-[50px] font-black text-black tracking-tighter leading-none italic">
+            <h1 className="text-[52px] font-black text-black tracking-tighter leading-none italic">
               {data.deviasiWaktu.split(' ')[0]}
             </h1>
             <div className="flex flex-col items-start">
@@ -97,49 +91,49 @@ const KesalahanWaktuReport: React.FC<Props> = ({ data }) => {
         </div>
       </div>
 
-      {/* Bagian Keterangan Analisa Teknis (Dibuat Lebih Presisi & Padat) */}
-      <div className="bg-[#fffbeb] border border-[#fde047] flex-1 overflow-hidden min-h-0 rounded-sm shadow-sm flex items-stretch">
-        {/* Ikon Alert Kiri (Diperkecil) */}
+      {/* Bagian Keterangan Analisa Teknis */}
+      <div className="bg-[#fffbeb] border border-[#fde047] max-h-[300px] overflow-hidden rounded-sm shadow-sm flex items-stretch">
+        {/* Ikon Alert Kiri */}
         <div className="w-14 shrink-0 flex items-center justify-center border-r border-amber-200/40 bg-amber-50/10">
            <AlertTriangle size={24} className="text-[#fbbf24]" strokeWidth={1.5} />
         </div>
 
-        {/* Konten Narasi Tengah (Padding dikurangi agar presisi) */}
-        <div className="flex-1 p-7 flex flex-col overflow-hidden">
-          <div className="flex items-center gap-2 mb-3 shrink-0">
-             <Terminal size={10} className="text-[#b45309]" />
-             <h3 className="text-[10px] font-black tracking-[0.15em] text-[#92400e] uppercase italic">
-               &gt;_ &gt;_ KETERANGAN ANALISA TEKNIS SINKRONISASI
+        {/* Konten Narasi Tengah */}
+        <div className="flex-1 p-8 flex flex-col overflow-hidden">
+          <div className="flex items-center gap-2 mb-4 shrink-0">
+             <Terminal size={12} className="text-[#b45309]" />
+             <h3 className="text-[11px] font-black tracking-[0.2em] text-[#92400e] uppercase italic">
+               KETERANGAN ANALISA TEKNIS SINKRONISASI
              </h3>
           </div>
           <div className="overflow-y-auto custom-scrollbar pr-6 flex-1">
-             <div className={`${getFontSize(data.keteranganWaktu)} font-roboto-medium text-[#78350f] text-justify leading-relaxed`}>
-                <span className="font-black block mb-1 text-[12px] tracking-tight uppercase">Diagnosa Sistem:</span>
-                <p className="whitespace-pre-wrap italic opacity-95">
+             <div className="font-roboto-medium text-[#78350f] text-justify leading-relaxed">
+                <span className="font-black block mb-2 text-[17px] tracking-tight uppercase">Diagnosa Sistem:</span>
+                <p className="whitespace-pre-wrap italic opacity-95 text-[15px] leading-relaxed">
                    {data.keteranganWaktu.replace('Diagnosa Sistem:', '').trim()}
                 </p>
              </div>
           </div>
         </div>
 
-        {/* Status Panel Kanan (Lebar dikurangi agar padat) */}
-        <div className="w-[210px] shrink-0 border-l border-amber-300/40 bg-amber-50/20 p-7 flex flex-col justify-center gap-6">
+        {/* Status Panel Kanan */}
+        <div className="w-[210px] shrink-0 border-l border-amber-300/40 bg-amber-50/20 p-8 flex flex-col justify-center gap-7">
            <div className="space-y-1">
               <p className="text-[7px] font-black text-amber-600 uppercase tracking-[0.2em] italic">SYNC STATUS</p>
-              <p className="text-[11px] font-black text-amber-900 uppercase tracking-widest leading-none">IN-PROGRESS</p>
+              <p className="text-[12px] font-black text-amber-900 uppercase tracking-widest leading-none">IN-PROGRESS</p>
            </div>
            <div className="space-y-1">
               <p className="text-[7px] font-black text-amber-600 uppercase tracking-[0.2em] italic">ACCESS MODE</p>
-              <p className="text-[11px] font-black text-zinc-800 uppercase italic tracking-widest leading-none">RESTRICTED</p>
+              <p className="text-[12px] font-black text-zinc-800 uppercase italic tracking-widest leading-none">RESTRICTED</p>
            </div>
-           <div className="mt-2 pt-4 border-t border-amber-300/30">
+           <div className="mt-2 pt-5 border-t border-amber-300/30">
               <p className="text-[6px] font-mono-tech text-zinc-400 tracking-[0.4em] uppercase opacity-60">NODE_ID: MILANO-X9</p>
            </div>
         </div>
       </div>
 
       {/* Footer Audit */}
-      <div className="bg-black text-white px-6 py-3 flex items-center justify-between rounded-sm shrink-0">
+      <div className="bg-black text-white px-6 py-3 flex items-center justify-between rounded-sm shrink-0 mt-auto">
          <div className="flex items-center gap-3">
             <div className="flex items-center justify-center p-1 bg-emerald-500/10 rounded">
                <ShieldCheck size={12} className="text-emerald-500" />
