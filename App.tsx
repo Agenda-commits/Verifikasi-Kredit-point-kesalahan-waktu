@@ -61,7 +61,7 @@ const App: React.FC = () => {
 
     if (numericFields.includes(key as string)) {
       const parsed = parseNumber(value);
-      newData[key] = parsed;
+      (newData as any)[key] = parsed;
 
       const recalculate = () => {
         if (activeTab === 'SKOR KREDIT') {
@@ -82,7 +82,7 @@ const App: React.FC = () => {
         recalculate();
       }
     } else {
-      newData[key] = value;
+      (newData as any)[key] = value;
     }
 
     setData(newData);
@@ -195,7 +195,7 @@ const App: React.FC = () => {
             <h3 className="text-[10px] font-bold tracking-widest uppercase">PENULISAN NARASI MANUAL ({activeTab})</h3>
           </div>
           <textarea
-            value={data[activeKeteranganKey] as string}
+            value={(data as any)[activeKeteranganKey] as string}
             onChange={(e) => updateData(activeKeteranganKey, e.target.value)}
             className="w-full h-40 bg-[#0a0a0a] border border-[#222] text-[#eee] p-3 text-[10px] font-roboto-medium focus:outline-none focus:border-zinc-500 transition-all leading-relaxed resize-none custom-scrollbar italic"
             placeholder={`Ketik narasi instruksi manual untuk ${activeTab} di sini...`}
@@ -289,7 +289,7 @@ const App: React.FC = () => {
           className={`bg-white shadow-[0_60px_120px_rgba(0,0,0,0.15)] relative overflow-hidden flex flex-col transition-all`}
           style={{ width: '1634px', height: '866px', minWidth: '1634px', minHeight: '866px' }}
         >
-          {/* GIORGIO ARMANI HEADER */}
+          {/* HEADER GIORGIO ARMANI */}
           <div className="w-full pt-4 px-16 relative">
              <div className="flex justify-between items-center opacity-30 border-b border-zinc-200 pb-2 mb-2">
                 <div className="flex items-center gap-6">
