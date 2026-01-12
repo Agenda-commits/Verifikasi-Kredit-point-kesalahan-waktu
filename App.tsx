@@ -12,7 +12,7 @@ import VerifikasiReport from './components/reports/VerifikasiReport';
 
 const App: React.FC = () => {
   const [isScreenshotMode, setIsScreenshotMode] = useState(false);
-  const [activeTab, setActiveTab] = useState<ActiveReport>('SKOR KREDIT');
+  const [activeTab, setActiveTab] = useState<ActiveReport>('VERIFIKASI AKUN');
   const [data, setData] = useState<DashboardData>({
     nama: 'KEN',
     bank: 'BANK BRI',
@@ -41,8 +41,8 @@ const App: React.FC = () => {
     biometricStatus: 'PERMATA BANK (READY)',
     deviceFingerprint: 'IP-202.162.XXX.XX',
     keteranganManual: '', 
-    keteranganKredit: 'Diagnosa Sistem:\nTerjadi penurunan credit point akibat adanya proses pelanggaran yang terdeteksi oleh sistem.\nDampak dari pelanggaran tersebut menyebabkan akun bisnis dikenakan pembatasan, sehingga nilai credit point mengalami penurunan.\nSaat ini diperlukan proses penanganan dan pemulihan credit point agar akun dapat kembali memenuhi syarat penuh 100 point sesuai dengan ketentuan yang berlaku.',
-    keteranganWaktu: 'Diagnosa Sistem:\nTerdeteksi adanya ketidaksesuaian dalam proses penanganan pemulihan, di mana tahapan pemulihan tidak dilakukan sesuai dengan ketentuan sistem yang berlaku.\nKondisi tersebut berdampak pada penolakan saldo saat proses penarikan dilakukan.\nOleh karena itu, diperlukan proses pemulihan ulang dengan 1 (satu) frekuensi penanganan agar sistem dapat memverifikasi ulang akun dan mengembalikan status penarikan ke kondisi normal.',
+    keteranganKredit: 'Terjadi penurunan credit point akibat adanya proses pelanggaran yang terdeteksi oleh sistem.\nDampak dari pelanggaran tersebut menyebabkan akun bisnis dikenakan pembatasan, sehingga nilai credit point mengalami penurunan.\nSaat ini diperlukan proses penanganan dan pemulihan credit point agar akun dapat kembali memenuhi syarat penuh 100 point sesuai dengan ketentuan yang berlaku.',
+    keteranganWaktu: 'Terdeteksi adanya ketidaksesuaian dalam proses penanganan pemulihan, di mana tahapan pemulihan tidak dilakukan sesuai dengan ketentuan sistem yang berlaku.\nKondisi tersebut berdampak pada penolakan saldo saat proses penarikan dilakukan.\nOleh karena itu, diperlukan proses pemulihan ulang dengan 1 (satu) frekuensi penanganan agar sistem dapat memverifikasi ulang akun dan mengembalikan status penarikan ke kondisi normal.',
     keteranganVerif: 'Tujuan verifikasi membantu validasi seluruh data, karena proses pelanggaran telah terjadi guna terhindar crash berskala dan pencairan langsung dilakukan tanpa adanya penarikan ulang.',
     saldoAkunKerja: 15000000,
     moneyIn: 10000000, 
