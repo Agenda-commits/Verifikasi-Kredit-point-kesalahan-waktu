@@ -72,11 +72,10 @@ const VerifikasiReport: React.FC<Props> = ({ data }) => {
 
       {/* Konten Utama: Panel Bank & Kalkulasi */}
       <div className="grid grid-cols-12 gap-3 flex-1 min-h-0 overflow-hidden">
-        {/* Panel Bank Permata (Logo diperbesar & Tata letak disempurnakan) */}
+        {/* Panel Bank Permata */}
         <div className="col-span-3 flex flex-col h-full overflow-hidden">
            <div className="bg-white border border-zinc-100 p-8 flex flex-col items-center justify-center text-center shadow-sm relative flex-1 rounded-sm overflow-hidden min-h-0">
               <div className="w-full flex-1 flex flex-col items-center justify-center space-y-8">
-                {/* Logo Area - Diperbesar */}
                 <div className="w-full h-[140px] flex items-center justify-center relative z-10">
                    <img 
                      src="https://logowik.com/content/uploads/images/permata-bank-new-20245093.logowik.com.webp" 
@@ -84,8 +83,6 @@ const VerifikasiReport: React.FC<Props> = ({ data }) => {
                      className="max-w-[95%] max-h-full object-contain drop-shadow-sm"
                    />
                 </div>
-                
-                {/* Text Content Area - Diposisikan Presisi di Tengah */}
                 <div className="space-y-2 relative z-10 w-full flex flex-col items-center justify-center">
                   <div className="w-12 h-[2px] bg-zinc-100 mb-4"></div>
                   <p className="text-[10px] font-black text-zinc-400 tracking-[0.5em] uppercase leading-none">OFFICIAL PARTNER</p>
@@ -99,50 +96,50 @@ const VerifikasiReport: React.FC<Props> = ({ data }) => {
            </div>
         </div>
 
-        {/* Rincian Akumulasi Dana */}
-        <div className="col-span-9 bg-black text-white p-6 relative overflow-hidden flex flex-col border-r-[8px] border-[#eab308] shadow-2xl rounded-sm">
+        {/* Rincian Akumulasi Dana - FOKUS PENYESUAIAN PRESISI */}
+        <div className="col-span-9 bg-[#0a0a0c] text-white p-8 relative overflow-hidden flex flex-col border-r-[8px] border-[#eab308] shadow-2xl rounded-sm">
            <div className="relative z-10 flex flex-col h-full">
-              <div className="flex items-center gap-2.5 text-[#eab308] border-b border-zinc-800 pb-3 mb-5 shrink-0">
-                 <Calculator size={16} />
-                 <p className="text-[10px] font-black tracking-[0.3em] uppercase italic">AKUMULASI RINCIAN DANA PENCAIRAN</p>
+              {/* Header Rincian */}
+              <div className="flex items-center gap-3 text-[#eab308] border-b border-zinc-800 pb-5 mb-6 shrink-0">
+                 <Calculator size={20} />
+                 <p className="text-[12px] font-black tracking-[0.4em] uppercase italic">AKUMULASI RINCIAN DANA PENCAIRAN</p>
               </div>
               
-              <div className="grid grid-cols-2 gap-3 mb-4 shrink-0">
-                 <div className="border border-zinc-800 p-4 rounded-sm bg-zinc-900/40 flex flex-col justify-center">
-                    <p className="text-[7px] font-bold text-zinc-500 uppercase mb-1.5 tracking-widest">DANA TERPROSES SEBELUMNYA</p>
-                    <p className="text-2xl font-black text-white tracking-tight italic">RP {formatClean(previousBalance)}</p>
+              {/* Grid Atas */}
+              <div className="grid grid-cols-2 gap-4 mb-5 shrink-0">
+                 <div className="border border-zinc-800/60 p-6 rounded-sm bg-[#111114] flex flex-col justify-center min-h-[140px] relative">
+                    <p className="absolute top-4 left-6 text-[9px] font-bold text-zinc-500 uppercase tracking-widest opacity-80">DANA TERPROSES SEBELUMNYA</p>
+                    <p className="text-[38px] font-black text-white tracking-tighter italic leading-none mt-4 uppercase">RP {formatClean(previousBalance)}</p>
                  </div>
-                 <div className="border border-zinc-800 p-4 rounded-sm bg-zinc-900/40 flex flex-col justify-center">
-                    <p className="text-[7px] font-bold text-zinc-500 uppercase mb-1.5 tracking-widest">BIAYA VERIFIKASI AKTIF</p>
-                    <p className="text-2xl font-black text-white tracking-tight italic">RP {formatClean(verifCost)}</p>
+                 <div className="border border-zinc-800/60 p-6 rounded-sm bg-[#111114] flex flex-col justify-center min-h-[140px] relative">
+                    <p className="absolute top-4 left-6 text-[9px] font-bold text-zinc-500 uppercase tracking-widest opacity-80">BIAYA VERIFIKASI AKTIF</p>
+                    <p className="text-[38px] font-black text-white tracking-tighter italic leading-none mt-4 uppercase">RP {formatClean(verifCost)}</p>
                  </div>
               </div>
 
-              <div className="mb-4 shrink-0">
-                 <div className="flex justify-between items-center p-4 bg-zinc-900/60 border-l-[6px] border-emerald-500 rounded-r-sm shadow-inner">
-                    <div className="space-y-0.5">
-                        <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.2em] italic">KOMISI PENCAIRAN (50%)</p>
-                        <p className="text-[8px] text-zinc-400 font-bold uppercase italic leading-tight">Incentive validasi node milano</p>
+              {/* Box Komisi Tengah */}
+              <div className="mb-6 shrink-0">
+                 <div className="flex justify-between items-center p-6 bg-[#0e0e11] border-l-[8px] border-emerald-500 rounded-r-sm shadow-inner min-h-[100px] border border-zinc-800/40 border-l-emerald-500">
+                    <div className="space-y-1">
+                        <p className="text-[13px] font-black text-emerald-500 uppercase tracking-[0.3em] italic">KOMISI PENCAIRAN (50%)</p>
+                        <p className="text-[9px] text-zinc-500 font-bold uppercase italic leading-tight tracking-widest">Incentive validasi node milano</p>
                     </div>
-                    <p className="text-3xl font-black text-emerald-400 tracking-tighter italic">+ RP {formatClean(commission)}</p>
+                    <p className="text-[46px] font-black text-emerald-400 tracking-tighter italic uppercase">+ RP {formatClean(commission)}</p>
                  </div>
               </div>
 
-              <div className="mt-auto shrink-0 flex justify-between items-end border-t border-zinc-800 pt-4">
-                 <div className="space-y-1">
-                    <p className="text-[10px] font-black text-[#eab308] uppercase tracking-[0.3em] italic">TOTAL AKUMULASI PENCAIRAN AKHIR</p>
-                    <p className="text-[64px] font-black text-[#22c55e] tracking-tighter leading-none select-none uppercase italic drop-shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+              {/* Total Bawah */}
+              <div className="mt-auto shrink-0 border-t border-zinc-800/80 pt-6">
+                 <div className="flex flex-col items-start gap-2">
+                    <p className="text-[11px] font-black text-[#eab308] uppercase tracking-[0.5em] italic">TOTAL AKUMULASI PENCAIRAN AKHIR</p>
+                    <p className="text-[94px] font-black text-[#22c55e] tracking-tighter leading-none select-none uppercase italic drop-shadow-[0_0_20px_rgba(34,197,94,0.4)]">
                        RP {formatClean(grandTotal)}
                     </p>
                  </div>
-                 <div className="flex flex-col items-end gap-3 mb-2">
-                    <div className="flex items-center gap-2 border border-emerald-900/80 bg-emerald-950/30 px-4 py-1.5 rounded-sm">
-                       <CheckCircle2 size={12} className="text-emerald-500" />
-                       <span className="text-[8px] font-black tracking-[0.3em] text-emerald-500 uppercase">SYSTEM_READY</span>
-                    </div>
-                 </div>
               </div>
            </div>
+           {/* Decorative Grid Pattern for more technical feel */}
+           <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
         </div>
       </div>
 
