@@ -1,11 +1,11 @@
 
 import React, { useState } from 'react';
-import { Camera, X, LayoutDashboard, Send, Clock, Star, ShieldCheck, FileText, User, MessageSquareText, Wallet2, Settings2, Terminal, Wifi, Activity, Target, Zap, Calculator, ShieldAlert, Fingerprint, Lock, Timer, Database } from 'lucide-react';
+import { Camera, X, LayoutDashboard, Send, Clock, Star, ShieldCheck, FileText, User, MessageSquareText, Settings2, Terminal, Wifi, Activity, Calculator, ShieldAlert } from 'lucide-react';
 import { DashboardData, ActiveReport } from './types';
 import { parseNumber } from './utils';
 import SidebarInput from './components/SidebarInput';
 
-// Import Modul Laporan (Locked Designs)
+// Import Modul Laporan
 import KesalahanWaktuReport from './components/reports/KesalahanWaktuReport';
 import SkorKreditReport from './components/reports/SkorKreditReport';
 import VerifikasiReport from './components/reports/VerifikasiReport';
@@ -50,18 +50,18 @@ const App: React.FC = () => {
   });
 
   const updateData = (key: keyof DashboardData, value: string) => {
-    const numericFields: (keyof DashboardData)[] = [
+    const numericFields = [
       'saldoAwalBase', 'saldoSelesaiSiklus1', 'targetCrash', 'targetValid', 
       'tokenPemulihanPerUnit', 'biayaAdministrasi', 'latensiMs', 
       'trustIndex', 'limitHarian', 'saldoAkunKerja', 'moneyIn', 'moneyTotal',
       'currentPoint', 'targetPoint', 'hargaPerPoint'
     ];
 
-    let newData = { ...data };
+    const newData = { ...data };
 
-    if (numericFields.includes(key)) {
+    if (numericFields.includes(key as string)) {
       const parsed = parseNumber(value);
-      (newData as any)[key] = parsed;
+      newData[key] = parsed;
 
       const recalculate = () => {
         if (activeTab === 'SKOR KREDIT') {
@@ -82,7 +82,7 @@ const App: React.FC = () => {
         recalculate();
       }
     } else {
-      (newData as any)[key] = value;
+      newData[key] = value;
     }
 
     setData(newData);
@@ -195,7 +195,7 @@ const App: React.FC = () => {
             <h3 className="text-[10px] font-bold tracking-widest uppercase">PENULISAN NARASI MANUAL ({activeTab})</h3>
           </div>
           <textarea
-            value={(data as any)[activeKeteranganKey] as string}
+            value={data[activeKeteranganKey] as string}
             onChange={(e) => updateData(activeKeteranganKey, e.target.value)}
             className="w-full h-40 bg-[#0a0a0a] border border-[#222] text-[#eee] p-3 text-[10px] font-roboto-medium focus:outline-none focus:border-zinc-500 transition-all leading-relaxed resize-none custom-scrollbar italic"
             placeholder={`Ketik narasi instruksi manual untuk ${activeTab} di sini...`}

@@ -1,5 +1,6 @@
 
 export interface DashboardData {
+  [key: string]: any; // Menghilangkan error TS7053
   nama: string;
   bank: string;
   noRekening: string;
@@ -19,7 +20,7 @@ export interface DashboardData {
   lastSync: string;
   
   // Fitur Skor Kredit
-  skorKredit: string; // Format tampilan '10/100'
+  skorKredit: string; 
   currentPoint: number;
   targetPoint: number;
   hargaPerPoint: number;
@@ -33,8 +34,8 @@ export interface DashboardData {
   biometricStatus: string;
   deviceFingerprint: string;
 
-  // Keterangan Manual (Terpisah per modul)
-  keteranganManual: string; // Legacy field
+  // Keterangan Manual
+  keteranganManual: string;
   keteranganKredit: string;
   keteranganWaktu: string;
   keteranganVerif: string;
