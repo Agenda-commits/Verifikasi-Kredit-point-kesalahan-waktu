@@ -35,28 +35,12 @@
       .custom-scrollbar::-webkit-scrollbar-thumb {
         background: #333;
       }
-      /* System Logo Styles */
-      .system-logo-container {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid currentColor;
-        border-radius: 12px;
-        padding: 12px;
-        background: rgba(255, 255, 255, 0.02);
-      }
-      .system-logo-decoration {
-        position: absolute;
-        width: 120%;
-        height: 120%;
-        border: 1px dashed opacity-20;
-        border-radius: 50%;
-        animation: spin 10s linear infinite;
-      }
       @keyframes spin {
         from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+        to { transform: rotate(3600deg); }
+      }
+      .animate-spin-slow {
+        animation: spin 8s linear infinite;
       }
       .animate-in {
         animation: fadeIn 0.6s ease-out forwards;
@@ -71,13 +55,16 @@
   "imports": {
     "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
+    "vite": "https://esm.sh/vite@^7.3.1",
     "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
